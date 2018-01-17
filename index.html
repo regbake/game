@@ -18,13 +18,19 @@
 </head>
 <body onload="startGame()">
   <h1>txt txt revolution baebee</h1>
+  <button onclick="startGame()">Restart the game</button>
 
   <script>
     function startGame() {
       console.log("Ready to rock?");
 
       gameArea.start();
+      //Component(width, height, color, x, y)
       gamePiece = new Component(20, 20, "blue", 10, 10);
+      gamePiece2 = new Component(20, 20, "blue", 40, 10);
+
+      square1 = new Square(25, 25, 7.5, 457.5);
+      square2 = new Square(25, 25, 37.5, 457.5);
     }
 
     //declare the gameArea in canvas
@@ -35,6 +41,7 @@
         this.canvas.height = 500;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+
         this.interval = setInterval(updateGameArea, 100);
       },
       clear: function() {
@@ -55,10 +62,27 @@
       }
     }
 
+    function Square(width, height, x, y){
+      this.width = width;
+      this.height = height;
+      this.x = x;
+      this.y = y;
+      this.update = function() {
+        ctx = gameArea.context;
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
+      }
+    }
+
     function updateGameArea() {
       gameArea.clear();
-      gamePiece.x += 1;
+      gamePiece.y += 3;
+      gamePiece2.y += 3;
       gamePiece.update();
+      gamePiece2.update();
+
+      square1.update();
+      square2.update();
     }
   </script>
 </body>
