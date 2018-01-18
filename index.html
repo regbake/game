@@ -26,6 +26,7 @@
       var script = "SoManyFallingLetters";
       var letters = script.split(""); //array of letters
 
+      //spits out a new letter based on the interval
       var count = 0;
       var iterator = setInterval(function(){
         console.log(letters[count]);
@@ -34,14 +35,14 @@
         if (count === letters.length){
           clearTimeout(iterator);
         }
-      }, 200);  
+      }, 600);
     }
 
     function startGame() {
       console.log("Ready to rock?");
-
-
       gameArea.start();
+      getLetters();
+
       //Component(width, height, color, x, y)
       gamePiece = new Component(20, 20, "blue", 10, 10);
       gamePiece2 = new Component(20, 20, "blue", 40, 10);
@@ -74,6 +75,7 @@
       this.height = height;
       this.x = x;
       this.y = y;
+
       this.update = function(){
         ctx = gameArea.context;
         ctx.fillStyle = color;
@@ -90,6 +92,21 @@
         ctx = gameArea.context;
         ctx.rect(this.x, this.y, this.width, this.height);
         ctx.stroke();
+      }
+    }
+
+    //combine the Square and Component functions in a single c'tor 
+    function CreateLockKey(x) {
+      this.lock = {
+        side: 25,
+        x: x,
+        y: 425
+      }
+
+      this.key = {
+        side: 20,
+        x: x,
+        y: 10
       }
     }
 
