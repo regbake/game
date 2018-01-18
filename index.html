@@ -19,6 +19,7 @@
 <body onload="startGame()">
   <h1>txt txt revolution baebee</h1>
   <button onclick="startGame()">Restart the game</button>
+  <button onclick="checkPosition()">vanity button</button>
 
   <script>
     function startGame() {
@@ -78,10 +79,10 @@
     }
 
     function updateGameArea() {
-      if (gamePiece.y < 500 && gamePiece2.y < 500) {
+      if (gamePiece.y < 507.5) {
         gameArea.clear();
-        gamePiece.y += 3;
-        gamePiece2.y += 3;
+        gamePiece.y += 5;
+        gamePiece2.y += 5;
         gamePiece.update();
         gamePiece2.update();
 
@@ -89,6 +90,52 @@
         square2.update();
       }
     }
+
+    //check the position of the key...
+    function checkPosition() {
+      var position = gamePiece.y;
+
+      if (position < 300) {
+        console.log("too soon");
+      } else if (position < 450) {
+        console.log("almost there")
+      } else if (position < 457.5) {
+        console.log("cool");
+      } else if (position > 458){
+        console.log("missed it");
+      } else {
+        console.log("whatever")
+      }
+    }
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- sup -->
