@@ -24,6 +24,7 @@
     function startGame() {
       console.log("Ready to rock?");
 
+
       gameArea.start();
       //Component(width, height, color, x, y)
       gamePiece = new Component(20, 20, "blue", 10, 10);
@@ -42,6 +43,8 @@
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
+        //make it so that the keys don't speed up on reset
+        this.interval = clearTimeout(this.interval);
         this.interval = setInterval(updateGameArea, 100);
       },
       clear: function() {
@@ -75,14 +78,16 @@
     }
 
     function updateGameArea() {
-      gameArea.clear();
-      gamePiece.y += 3;
-      gamePiece2.y += 3;
-      gamePiece.update();
-      gamePiece2.update();
+      if (gamePiece.y < 500 && gamePiece2.y < 500) {
+        gameArea.clear();
+        gamePiece.y += 3;
+        gamePiece2.y += 3;
+        gamePiece.update();
+        gamePiece2.update();
 
-      square1.update();
-      square2.update();
+        square1.update();
+        square2.update();
+      }
     }
   </script>
 </body>
