@@ -70,45 +70,55 @@
     }
 
     //initiate the Component constructor
-    function Component(width, height, color, x, y){
-      this.width = width;
-      this.height = height;
-      this.x = x;
-      this.y = y;
+    // function Component(width, height, color, x, y){
+    //   this.width = width;
+    //   this.height = height;
+    //   this.x = x;
+    //   this.y = y;
+    //
+    //   this.update = function(){
+    //     ctx = gameArea.context;
+    //     ctx.fillStyle = color;
+    //     ctx.fillRect(this.x, this.y, this.width, this.height);
+    //   }
+    // }
+    //
+    // function Square(width, height, x, y){
+    //   this.width = width;
+    //   this.height = height;
+    //   this.x = x;
+    //   this.y = y;
+    //   this.update = function() {
+    //     ctx = gameArea.context;
+    //     ctx.rect(this.x, this.y, this.width, this.height);
+    //     ctx.stroke();
+    //   }
+    // }
 
-      this.update = function(){
-        ctx = gameArea.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-      }
-    }
-
-    function Square(width, height, x, y){
-      this.width = width;
-      this.height = height;
-      this.x = x;
-      this.y = y;
-      this.update = function() {
-        ctx = gameArea.context;
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-      }
-    }
-
-    //combine the Square and Component functions in a single c'tor 
+    //combine the Square and Component functions in a single c'tor
     function CreateLockKey(x) {
-      this.lock = {
-        side: 25,
-        x: x,
-        y: 425
-      }
+          this.lock = {
+            side: 25,
+            x: x,
+            y: 425,
+            update: function(){
+              ctx = gameArea.context;
+              ctx.rect(this.x, this.y, this.side, this.side);
+              ctx.stroke;
+            }
+          }
 
-      this.key = {
-        side: 20,
-        x: x,
-        y: 10
-      }
-    }
+          this.key = {
+            side: 20,
+            x: x,
+            y: 10,
+            update: function(){
+              ctx = gameArea.context;
+              ctx.fillStyle = color;
+              ctx.fillRect(this.x, this.y, this.side, this.side);
+            }
+          }
+        }
 
     function updateGameArea() {
       if (gamePiece.y < 507.5) {
