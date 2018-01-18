@@ -22,6 +22,21 @@
   <button onclick="checkPosition()">vanity button</button>
 
   <script>
+    function getLetters() {
+      var script = "SoManyFallingLetters";
+      var letters = script.split(""); //array of letters
+
+      var count = 0;
+      var iterator = setInterval(function(){
+        console.log(letters[count]);
+        count++;
+
+        if (count === letters.length){
+          clearTimeout(iterator);
+        }
+      }, 200);  
+    }
+
     function startGame() {
       console.log("Ready to rock?");
 
@@ -31,8 +46,8 @@
       gamePiece = new Component(20, 20, "blue", 10, 10);
       gamePiece2 = new Component(20, 20, "blue", 40, 10);
 
-      square1 = new Square(25, 25, 7.5, 457.5);
-      square2 = new Square(25, 25, 37.5, 457.5);
+      square1 = new Square(25, 25, 7.5, 425);
+      square2 = new Square(25, 25, 37.5, 425);
     }
 
     //declare the gameArea in canvas
@@ -99,7 +114,7 @@
         console.log("too soon");
       } else if (position < 450) {
         console.log("almost there")
-      } else if (position < 457.5) {
+      } else if (position < 455) {
         console.log("cool");
       } else if (position > 458){
         console.log("missed it");
